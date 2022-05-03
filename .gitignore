@@ -2,7 +2,8 @@
 node_modules
 
 # Envs
-.env*
+.env
+.env.*
 
 # Build
 dist

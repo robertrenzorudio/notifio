@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 import EbayAuthToken from 'ebay-oauth-nodejs-client';
 
 class EbayAccessToken {

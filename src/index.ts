@@ -1,16 +1,13 @@
-import 'dotenv/config';
-import express from 'express';
-import { findRouter, shopRouter } from './routes/index.js';
+import dotenv from 'dotenv';
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+import app from './app.js';
 
-(async () => {
-  const app = express();
-  app.use('/find', findRouter);
-  app.use('/shop', shopRouter);
-  app.get('/', (_, res) => {
-    res.send('Hello World!');
-  });
-
+const main = async () => {
   app.listen(parseInt(process.env.PORT!), () => {
     console.log(`Server ready at: http://localhost:${process.env.PORT}`);
   });
-})();
+};
+
+main().catch((err) => {
+  console.log(err.message);
+});
