@@ -8,6 +8,11 @@ on:
 
   workflow_dispatch:
 
+env:
+  EBAY_CLIENT_ID: ${{secrets.EBAY_CLIENT_ID}}
+  EBAY_CLIENT_SECRET: ${{secrets.EBAY_CLIENT_SECRET}}
+  EBAY_AUTH_REDIRECT_URL: ${{secrets.EBAY_AUTH_REDIRECT_URL}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
