@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import { findRouter, shopRouter } from './routes/index.js';
+import { findRouter, shopRouter } from './routes';
 
 (async () => {
   const app = express();

@@ -1,5 +1,5 @@
 import express from 'express';
-import { get_getSingleItem } from '../controllers/shop/index.js';
+import { get_getSingleItem } from '../controllers/shop/';
 import {
   getEbayApiEndpoint,
   validateParameters,

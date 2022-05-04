@@ -1,3 +1,3 @@
-import EbayAccessToken from './EbayAccessToken.js';
+import EbayAccessToken from './EbayAccessToken';
 
 export { EbayAccessToken };

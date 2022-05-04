@@ -1,7 +1,7 @@
-import { EbayAccessToken } from '../../utils/index.js';
+import { EbayAccessToken } from '../../utils/index';
 import express from 'express';
 import fetch from 'node-fetch';
-import { ItemNotFoundError } from '../../custom-errors/index.js';
+import { ItemNotFoundError } from '../../custom-errors/index';
 
 const ebayToken = new EbayAccessToken();
 

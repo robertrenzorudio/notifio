@@ -1,7 +1,7 @@
 import express from 'express';
-import extractData from './extractData.js';
+import extractData from './extractData';
 import fetch from 'node-fetch';
-import { UserInputError } from '../../custom-errors/index.js';
+import { UserInputError } from '../../custom-errors/';
 
 const get_findItemsByKeywords = async (
   _: express.Request,

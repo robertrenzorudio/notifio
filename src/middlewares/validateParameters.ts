@@ -1,5 +1,5 @@
 import express from 'express';
-import UserInputError from '../custom-errors/UserInputError.js';
+import UserInputError from '../custom-errors/UserInputError';
 
 const validateParameters = (
   req: express.Request,

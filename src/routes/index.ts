@@ -1,4 +1,4 @@
-import findRouter from './find.js';
-import shopRouter from './shop.js';
+import findRouter from './find';
+import shopRouter from './shop';
 
 export { findRouter, shopRouter };

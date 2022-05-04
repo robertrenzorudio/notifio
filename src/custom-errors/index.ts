@@ -1,4 +1,4 @@
-import ItemNotFoundError from './ItemNotFoundError.js';
-import UserInputError from './UserInputError.js';
+import ItemNotFoundError from './ItemNotFoundError';
+import UserInputError from './UserInputError';
 
 export { ItemNotFoundError, UserInputError };
