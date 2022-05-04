@@ -1,4 +1,4 @@
-import getEbayApiEndpoint from './getEbayApiEndpoint.js';
-import validateParameters from './validateParameters.js';
+import getEbayApiEndpoint from './getEbayApiEndpoint';
+import validateParameters from './validateParameters';
 
 export { getEbayApiEndpoint, validateParameters };
