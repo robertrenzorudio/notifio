@@ -1,9 +1,6 @@
 import express from 'express';
 import { get_getSingleItem } from '../controllers/shop';
-import {
-  getEbayApiEndpoint,
-  validateParameters,
-} from '../middlewares/index.js';
+import { getEbayApiEndpoint, validateParameters } from '../middlewares';
 
 const router = express.Router();
 

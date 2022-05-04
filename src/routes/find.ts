@@ -4,10 +4,7 @@ import {
   get_findItemsByKeywords,
   get_findItemsByProduct,
 } from '../controllers/find';
-import {
-  getEbayApiEndpoint,
-  validateParameters,
-} from '../middlewares/index.js';
+import { getEbayApiEndpoint, validateParameters } from '../middlewares';
 
 router.get(
   '/findItemsByKeywords',
