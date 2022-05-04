@@ -1,5 +1,5 @@
-import buildFindingApiEndpoint from './buildFindingApiEndpoint.js';
-import buildShoppingApiEndpoint from './buildShoppingApiEndpoint.js';
+import buildFindingApiEndpoint from './buildFindingApiEndpoint';
+import buildShoppingApiEndpoint from './buildShoppingApiEndpoint';
 import express from 'express';
 
 const getEbayApiEndpoint = (

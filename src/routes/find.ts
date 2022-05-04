@@ -3,7 +3,7 @@ const router = express.Router();
 import {
   get_findItemsByKeywords,
   get_findItemsByProduct,
-} from '../controllers/find/index.js';
+} from '../controllers/find';
 import {
   getEbayApiEndpoint,
   validateParameters,
