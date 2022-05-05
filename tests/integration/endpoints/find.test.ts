@@ -1,4 +1,4 @@
-import app from '../../src/app';
+import app from '../../../src/app';
 import request from 'supertest';
 
 describe('Test GET /findItemsByProduct', () => {
@@ -29,6 +29,22 @@ describe('Test GET /findItemsByProduct', () => {
     async (expected, productIdType, productId) => {
       const res = await request(app).get(
         `/find/findItemsByProduct?productIdType=${productIdType}&productId=${productId}`
+      );
+      expect(res.statusCode).toBe(expected);
+    }
+  );
+});
+
+describe('Test GET /findItemsByKeywords', () => {
+  const cases = [
+    [400, '*'],
+    [200, 'Elden%Ring'],
+  ];
+  it.each(cases)(
+    'should return a status code of %s when keywords=%s',
+    async (expected, keywords) => {
+      const res = await request(app).get(
+        `/find/findItemsByKeywords?keywords=${keywords}`
       );
       expect(res.statusCode).toBe(expected);
     }
