@@ -6,14 +6,7 @@ on:
   pull_request:
     branches: [ development ]
 
-  workflow_dispatch:
-
-env:
-  EBAY_CLIENT_ID: ${{secrets.EBAY_CLIENT_ID}}
-  EBAY_CLIENT_SECRET: ${{secrets.EBAY_CLIENT_SECRET}}
-  EBAY_AUTH_REDIRECT_URL: ${{secrets.EBAY_AUTH_REDIRECT_URL}}
-  EBAY_FINDING_API_ENDPOINT: ${{secrets.EBAY_FINDING_API_ENDPOINT}}
-  EBAY_SHOPPING_API_ENDPOINT: ${{secrets.EBAY_SHOPPING_API_ENDPOINT}}
+  workflow_dispatch:  
 
 jobs:
   container-job:
@@ -41,6 +34,19 @@ jobs:
         
       - name: Run test
         env: 
+          # Database
           DATABASE_URL: postgresql://test:test@localhost:5432/test?schema=public
+          
+          # Ebay
+          EBAY_CLIENT_ID: ${{secrets.EBAY_CLIENT_ID}}
+          EBAY_CLIENT_SECRET: ${{secrets.EBAY_CLIENT_SECRET}}
+          EBAY_AUTH_REDIRECT_URL: ${{secrets.EBAY_AUTH_REDIRECT_URL}}
+          EBAY_FINDING_API_ENDPOINT: ${{secrets.EBAY_FINDING_API_ENDPOINT}}
+          EBAY_SHOPPING_API_ENDPOINT: ${{secrets.EBAY_SHOPPING_API_ENDPOINT}}
+          
+          # Google
+          GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          
         run: yarn test:ci
      
