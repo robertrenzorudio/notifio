@@ -18,7 +18,7 @@ env:
 jobs:
   container-job:
     runs-on: ubuntu-latest
-    container: node-18:alphine
+    container: node:18-alpine
     
     services:
       postgres:
