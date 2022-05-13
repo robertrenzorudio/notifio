@@ -1,7 +1,7 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-describe('Test GET /getSingleItem', () => {
+describe('Test GET /shop/getSingleItem', () => {
   const invalidCases = [
     [400, 'INVALID_TYPE'],
     [404, '000000000000'],

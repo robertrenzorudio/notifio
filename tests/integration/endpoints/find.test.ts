@@ -1,7 +1,7 @@
 import app from '../../../src/app';
 import request from 'supertest';
 
-describe('Test GET /findItemsByProduct', () => {
+describe('Test GET /find/findItemsByProduct', () => {
   const invalidCases = [
     [400, '', '0722674130202'],
     [400, 'INVALID_ID_TYPE', '0722674130202'],
@@ -35,7 +35,7 @@ describe('Test GET /findItemsByProduct', () => {
   );
 });
 
-describe('Test GET /findItemsByKeywords', () => {
+describe('Test GET /find/findItemsByKeywords', () => {
   const cases = [
     [400, '*'],
     [200, 'Elden%Ring'],
