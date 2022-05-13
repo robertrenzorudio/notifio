@@ -22,7 +22,7 @@ jobs:
     
     services:
       postgres:
-        image: postgres:alphine
+        image: postgres:alpine
         env:
           POSTGRES_PASSWORD: postgres
         options: >-
