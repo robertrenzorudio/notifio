@@ -16,8 +16,6 @@ jobs:
     services:
       postgres:
         image: postgres:alpine
-        env:
-          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -59,6 +57,10 @@ jobs:
           GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_SECRET}}
           GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
           GOOGLE_CALLBACK_URL: ${{secrets.GOOGLE_CALLBACK_URL}}
+          
+          # Session
+          SESSION_NAME: ${{secrets.SESSION_NAME}}
+          SESSION_SECRET: ${{secrets.SESSION_SECRET}}
           
         run: yarn test:ci
      
