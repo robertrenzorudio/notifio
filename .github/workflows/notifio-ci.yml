@@ -16,6 +16,8 @@ jobs:
     services:
       postgres:
         image: postgres:alpine
+        env:
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -41,7 +43,7 @@ jobs:
       - name: Run test
         env: 
           # Database
-          DATABASE_URL: postgresql://test:test@localhost:5432/test?schema=public
+          DATABASE_URL: postgresql://test:postgres@localhost:5432/test?schema=public
           
           # Cache
           CACHE_URL: redis://localhost:6379
