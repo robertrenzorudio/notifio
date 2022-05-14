@@ -13,15 +13,29 @@ const findOrCreateUser = async (
       authId = { googleId: id };
   }
 
-  const user = await db.user.create({
-    data: {
-      ...authId,
+  const user = await db.user.findUnique({
+    where: {
       email,
-      emailVerified,
-      authProvider,
     },
   });
-  return user;
+
+  if (!user) {
+    const newUser = await db.user.create({
+      data: {
+        ...authId,
+        email,
+        emailVerified,
+        authProvider,
+      },
+    });
+    return newUser;
+  }
+
+  if (user.authProvider === authProvider) {
+    return user;
+  }
+
+  return null;
 };
 
 export default findOrCreateUser;

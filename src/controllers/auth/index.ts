@@ -1,3 +1,3 @@
-import get_signup from './get_signup';
+import get_authGoogle from './get_authGoogle';
 
-export { get_signup };
+export { get_authGoogle };

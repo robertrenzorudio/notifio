@@ -23,6 +23,14 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+          
+      redis:
+        image: redis:alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
 
     steps:
@@ -35,7 +43,10 @@ jobs:
       - name: Run test
         env: 
           # Database
-          DATABASE_URL: postgresql://test:test@localhost:5432/test?schema=public
+          DATABASE_URL: postgresql://test:postgres@localhost:5432/test?schema=public
+          
+          # Cache
+          CACHE_URL: redis://localhost:6379
           
           # Ebay
           EBAY_CLIENT_ID: ${{secrets.EBAY_CLIENT_ID}}
@@ -47,6 +58,11 @@ jobs:
           # Google
           GOOGLE_CLIENT_ID: ${{secrets.GOOGLE_CLIENT_SECRET}}
           GOOGLE_CLIENT_SECRET: ${{secrets.GOOGLE_CLIENT_SECRET}}
+          GOOGLE_CALLBACK_URL: ${{secrets.GOOGLE_CALLBACK_URL}}
+          
+          # Session
+          SESSION_NAME: ${{secrets.SESSION_NAME}}
+          SESSION_SECRET: ${{secrets.SESSION_SECRET}}
           
         run: yarn test:ci
      

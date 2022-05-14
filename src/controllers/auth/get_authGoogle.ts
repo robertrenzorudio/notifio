@@ -14,13 +14,12 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      callbackURL: 'http://localhost:7070/auth/signup/google/callback',
+      callbackURL: process.env.GOOGLE_CALLBACK_URL!,
     },
     async (_, __, profile, done) => {
       try {
         const id = profile.id;
         const email = profile.emails![0].value;
-        console.log(profile.emails![0]);
         const emailVerified = (profile.emails![0].verified as any) === true;
         const user = await findOrCreateUser(
           id,
@@ -28,15 +27,19 @@ passport.use(
           emailVerified,
           AuthProvider.GOOGLE
         );
-        return done(null, user);
-      } catch (err) {
-        if (err.code === 'P2002') {
+        if (!user) {
           return done(null, {
             error:
-              'Sorry, that email address is already associated with an account.',
+              'Sorry, that email address is already associated with an account.' +
+              ' Please continue by singing up using a different method.',
           });
         }
-        return done(null, undefined);
+
+        return done(null, user);
+      } catch (err) {
+        return done(null, {
+          error: 'An error occured in the server. Please try again.',
+        });
       }
     }
   )
@@ -45,9 +48,15 @@ passport.use(
 const get_signup = (req: express.Request, res: express.Response) => {
   if ((req as any).user.error) {
     console.log((req as any).user.error);
-    return res.redirect(`/auth/temp/login?message=${(req as any).user.error}`);
+    return res.redirect(
+      `/auth/temp/create-account?message=${(req as any).user.error}`
+    );
   }
 
+  const user = req.user as User;
+  req.session.userId = user.id;
+  req.session.email = user.email;
+  req.session.emailVerfied = user.emailVerified;
   res.send({ user: (req.user as User).email });
 };
 
